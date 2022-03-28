@@ -1,0 +1,50 @@
+@font-face {
+    font-style: normal;
+    font-weight: 400;
+    font-family: AkkuratPro;
+    font-display: swap;
+    src: url('https://raw.githubusercontent.com/quoc1707/static-files/main/personal-blog/fonts/akkurat_regular.woff2')
+            format('woff2'),
+        url('https://raw.githubusercontent.com/quoc1707/static-files/main/personal-blog/fonts/akkurat_regular.woff')
+            format('woff');
+}
+
+@font-face {
+    font-style: normal;
+    font-weight: 700;
+    font-family: AkkuratPro;
+    font-display: swap;
+    src: url('https://raw.githubusercontent.com/quoc1707/static-files/main/personal-blog/fonts/akkurat_bold.woff2')
+            format('woff2'),
+        url('https://raw.githubusercontent.com/quoc1707/static-files/main/personal-blog/fonts/akkurat_bold.woff')
+            format('woff');
+}
+
+@font-face {
+    font-style: italic;
+    font-weight: 400;
+    font-family: AkkuratPro;
+    font-display: swap;
+    src: url('https://raw.githubusercontent.com/quoc1707/static-files/main/personal-blog/fonts/akkurat_italic.woff2')
+            format('woff2'),
+        url('https://raw.githubusercontent.com/quoc1707/static-files/main/personal-blog/fonts/akkurat_italic.woff')
+            format('woff');
+}
+
+*,
+*::before,
+*::after {
+    @apply box-border p-0 m-0;
+}
+
+*:focus {
+    @apply focus:outline-none;
+}
+
+html {
+    margin-left: calc(100vw - 100%);
+}
+
+body {
+    font-family: AkkuratPro, Arial, sans-serif;
+}
