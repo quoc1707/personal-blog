@@ -1,3 +1,7 @@
+const colors = require('tailwindcss/colors')
+const forms = require('@tailwindcss/forms')
+const typography = require('@tailwindcss/typography')
+
 module.exports = {
     content: [
         './components/**/*.{jsx,tsx}',
@@ -11,7 +15,7 @@ module.exports = {
                 14: '3.5rem',
             },
             colors: {
-                primary: require('tailwindcss/colors').sky,
+                primary: colors.sky,
             },
             typography: (theme) => ({
                 DEFAULT: {
@@ -144,7 +148,7 @@ module.exports = {
         typography: ['dark'],
     },
     plugins: [
-        require('@tailwindcss/forms'),
-        require('@tailwindcss/typography'),
+        forms,
+        typography,
     ],
 }
