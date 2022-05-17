@@ -15,7 +15,7 @@ const Home = ({ posts }: { posts: any[] }) => {
     return (
         <>
             <Head>
-                <title>Quoc's Blog</title>
+                <title>Quoc&#39;s Blog</title>
                 <meta
                     name='description'
                     content='Welcome to my blog! I hope you will like it.'
@@ -110,7 +110,7 @@ const Home = ({ posts }: { posts: any[] }) => {
                 </ul>
             </div>
             {posts.length > MAX_DISPLAY && (
-                <div className='flex justify-end text-base font-medium leading-6 pb-8'>
+                <div className='flex justify-end pb-8 text-base font-medium leading-6'>
                     <Link
                         className='text-primary-500 hover:text-primary-600 dark:hover:text-primary-400'
                         href='/post'

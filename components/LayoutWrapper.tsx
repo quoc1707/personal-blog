@@ -17,7 +17,7 @@ const LayoutWrapper = ({ children }: { children: string | JSX.Element }) => {
                                     <Logo />
                                 </div>
                                 <div className='hidden h-6 text-2xl font-semibold sm:block'>
-                                    Quoc's Blog
+                                    Quoc&#39;s Blog
                                 </div>
                             </div>
                         </Link>

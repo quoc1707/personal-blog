@@ -147,8 +147,5 @@ module.exports = {
     variants: {
         typography: ['dark'],
     },
-    plugins: [
-        forms,
-        typography,
-    ],
+    plugins: [forms, typography],
 }
