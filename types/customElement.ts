@@ -21,5 +21,5 @@ export type TOCInline = {
     indentDepth?: number
     fromHeading?: number
     toHeading?: number
-    exclude?: string
+    exclude?: string | string[]
 }

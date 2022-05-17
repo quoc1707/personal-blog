@@ -1,11 +1,11 @@
-const fsPromises = require('fs').promises
+const { writeFile } = require('fs/promises')
 const globby = require('globby')
-const prettier = require('prettier')
+const { resolveConfig, format } = require('prettier')
 
 const baseURL = 'https://quoc1707-blog.vercel.app'
 
 const generateSitemap = async () => {
-    const prettierConfig = await prettier.resolveConfig('./.prettierrc')
+    const prettierConfig = await resolveConfig('./.prettierrc')
     const pages = await globby([
         'pages/*.tsx',
         'data/post/**/*.mdx',
@@ -37,12 +37,12 @@ const generateSitemap = async () => {
     </urlset>
     `
 
-    const formattedSitemap = prettier.format(sitemap, {
+    const formattedSitemap = format(sitemap, {
         ...prettierConfig,
         parser: 'html',
     })
 
-    fsPromises.writeFile('public/sitemap.xml', formattedSitemap)
+    writeFile('public/sitemap.xml', formattedSitemap)
 }
 
 generateSitemap()

@@ -18,28 +18,35 @@ const TOCInline = ({
             !re.test(heading.value)
     )
 
-    const tocList = (
-        <ul>
-            {filteredToc.map((heading) => {
-                return (
-                    <li
-                        className={`${heading.depth >= indentDepth && 'ml-6'}`}
-                        key={heading.value}
-                    >
-                        <a href={heading.url}>{heading.value}</a>
-                    </li>
-                )
-            })}
-        </ul>
-    )
-
     return (
-        <details>
-            <summary className='pt-2 pb-2 ml-6 text-xl font-bold'>
-                Table of Contents
-            </summary>
-            <div className='ml-6'>{tocList}</div>
-        </details>
+        <>
+            {filteredToc.length > 0 && (
+                <details>
+                    <summary className='pt-2 pb-2 ml-6 text-xl font-bold'>
+                        Table of Contents
+                    </summary>
+                    <div className='ml-6'>
+                        <ul>
+                            {filteredToc.map((heading) => {
+                                return (
+                                    <li
+                                        className={`${
+                                            heading.depth >= indentDepth &&
+                                            'ml-6'
+                                        }`}
+                                        key={heading.value}
+                                    >
+                                        <a href={heading.url}>
+                                            {heading.value}
+                                        </a>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
+                </details>
+            )}
+        </>
     )
 }
 

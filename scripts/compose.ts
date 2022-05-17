@@ -1,5 +1,5 @@
-const fs = require('fs')
-const path = require('path')
+const { writeFile, readdirSync } = require('fs')
+const { join, parse } = require('path')
 const dedent = require('dedent')
 const inquirer = require('inquirer')
 
@@ -13,10 +13,10 @@ type IAnswer = {
 }
 
 const getAuthors = (): string[] => {
-    const authorPath = path.join(root, 'data', 'author')
-    const authorList = fs
-        .readdirSync(authorPath)
-        .map((filename: string) => path.parse(filename).name)
+    const authorPath = join(root, 'data', 'author')
+    const authorList = readdirSync(authorPath).map(
+        (filename: string) => parse(filename).name
+    )
     return authorList
 }
 
@@ -80,7 +80,7 @@ inquirer
         const frontMatter = genFrontMatter(answer)
         const filePath = `data/post/${fileName ? fileName : 'untitled'}.mdx`
 
-        fs.writeFile(filePath, frontMatter, (error: Error) => {
+        writeFile(filePath, frontMatter, (error: Error) => {
             error
                 ? console.error(`${error.message}\nSomething went wrong.`)
                 : console.log(`File created at: ${filePath}`)
