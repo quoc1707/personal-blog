@@ -1,9 +1,9 @@
-import navigation from '../data/navigation'
 import Link from './Link'
 import Logo from './Logo'
 import NavigationBar from './NavigationBar'
 import SectionContainer from './SectionContainer'
 import ThemeSwitch from './ThemeSwitch'
+import navigation from '../data/navigation'
 
 const LayoutWrapper = ({ children }: { children: string | JSX.Element }) => {
     return (

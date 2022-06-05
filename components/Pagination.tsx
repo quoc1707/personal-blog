@@ -19,7 +19,7 @@ const Pagination = ({ title, currentPage, totalPages }: IPagination) => {
                 <Head>
                     <title>{title}</title>
                 </Head>
-                <div className='pt-6 pb-8 leading-6 space-y-2 md:space-y-5'>
+                <div className='pt-6 pb-8 space-y-2 leading-6 md:space-y-5'>
                     <nav className='flex justify-between'>
                         {!prevPage && (
                             <button

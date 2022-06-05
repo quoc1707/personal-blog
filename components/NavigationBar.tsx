@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import navigation from '../data/navigation'
 import Link from './Link'
+import navigation from '../data/navigation'
+import { useState } from 'react'
 
 const NavigationBar = () => {
     const [displayed, setDisplayed] = useState(false)

@@ -1,7 +1,10 @@
 import { existsSync, readFileSync } from 'fs'
-import matter from 'gray-matter'
+import { extname, join } from 'path'
+import { remarkCodeTitles, remarkImgToJsx, remarkTocHeadings } from './remark'
+
 import { bundleMDX } from 'mdx-bundler'
-import { join, extname } from 'path'
+import getAllFilesRecursively from './files'
+import matter from 'gray-matter'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeCitation from 'rehype-citation'
 import rehypePrismPlus from 'rehype-prism-plus'
@@ -9,8 +12,6 @@ import rehypeSlug from 'rehype-slug'
 import remarkFootnotes from 'remark-footnotes'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
-import getAllFilesRecursively from './files'
-import { remarkCodeTitles, remarkImgToJsx, remarkTocHeadings } from './remark'
 
 const root = process.cwd()
 

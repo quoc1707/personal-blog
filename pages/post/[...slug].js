@@ -1,10 +1,11 @@
-import MDXLayoutRenderer from '../../components/MDXLayoutRenderer'
 import {
     formatSlug,
     getAllFilesFrontMatter,
     getFileBySlug,
     getFiles,
 } from '../../utils/mdx'
+
+import MDXLayoutRenderer from '../../components/MDXLayoutRenderer'
 
 const getStaticPaths = async () => {
     const posts = getFiles('post')

@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import Link from '../components/Link'
 import Tag from '../components/Tag'
-import { getAllFilesFrontMatter } from '../utils/mdx'
 import formatTime from '../utils/time'
+import { getAllFilesFrontMatter } from '../utils/mdx'
 
 const MAX_DISPLAY = 5
 

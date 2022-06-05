@@ -1,11 +1,12 @@
-import Head from 'next/head'
 import { useRef, useState } from 'react'
+
+import Head from 'next/head'
+import type { IFrontMatterDetails } from '../types/detail'
+import type { IListLayout } from '../types/layout'
 import KeyboardShortcut from '../components/KeyboardShortcut'
 import Link from '../components/Link'
 import Pagination from '../components/Pagination'
 import Tag from '../components/Tag'
-import type { IFrontMatterDetails } from '../types/detail'
-import type { IListLayout } from '../types/layout'
 import formatTime from '../utils/time'
 
 const ListLayout = ({

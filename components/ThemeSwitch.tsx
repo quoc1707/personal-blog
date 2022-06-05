@@ -1,6 +1,7 @@
-import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
+
 import KeyboardShortcut from './KeyboardShortcut'
+import { useTheme } from 'next-themes'
 
 const ThemeSwitch = () => {
     const [mounted, setMounted] = useState(false)

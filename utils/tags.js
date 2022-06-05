@@ -1,7 +1,7 @@
-import { readFileSync } from 'fs'
-import matter from 'gray-matter'
-import { join } from 'path'
 import { getFiles } from './mdx'
+import { join } from 'path'
+import matter from 'gray-matter'
+import { readFileSync } from 'fs'
 
 const root = process.cwd()
 

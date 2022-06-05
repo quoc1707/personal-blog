@@ -16,7 +16,7 @@ export type Heading = {
     url?: string
 }
 
-export type TOCInline = {
+export type ITOCInline = {
     toc: Heading[]
     indentDepth?: number
     fromHeading?: number

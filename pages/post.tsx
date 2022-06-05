@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import ListLayout from '../layouts/ListLayout'
 import type { IPostDetails } from '../types/detail'
+import ListLayout from '../layouts/ListLayout'
 import { getAllFilesFrontMatter } from '../utils/mdx'
 
 const POSTS_PER_PAGE = 5

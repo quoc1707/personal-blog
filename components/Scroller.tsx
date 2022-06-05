@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+
 import smoothscroll from 'smoothscroll-polyfill'
 
 const Scroller = ({ top, minYOffset }: { top: number; minYOffset: number }) => {
@@ -22,7 +23,7 @@ const Scroller = ({ top, minYOffset }: { top: number; minYOffset: number }) => {
 
     return (
         <>
-            <div className='fixed flex-col hidden gap-3 right-8 bottom-8 z-10 md:flex'>
+            <div className='fixed z-10 flex-col hidden gap-3 right-8 bottom-8 md:flex'>
                 <button
                     className='p-2 text-gray-500 transition-all bg-gray-200 rounded-full dark:text-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 hover:bg-gray-300'
                     style={{ opacity: displayed ? 1 : 0 }}

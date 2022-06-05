@@ -1,7 +1,7 @@
-import { useTheme } from 'next-themes'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
 import type { IKeyboardShortcut } from '../types/handler'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
+import { useTheme } from 'next-themes'
 
 const KeyboardShortcut = ({
     prev,
