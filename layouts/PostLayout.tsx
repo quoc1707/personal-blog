@@ -33,9 +33,7 @@ const PostLayout = ({
                     <meta property='og:description' content={description} />
                     <meta
                         property='og:image'
-                        content={`https://raw.githubusercontent.com/quoc1707/static-files/main/personal-blog/images/${generatePath(
-                            title
-                        )}.webp`}
+                        content={`/images/${generatePath(title)}.webp`}
                     />
                 </Head>
                 <div className='md:divide-y md:divide-gray-200 md:dark:divide-gray-700'>
@@ -74,7 +72,7 @@ const PostLayout = ({
                                                     className='w-10 h-10 rounded-full'
                                                     width={38}
                                                     height={38}
-                                                    src={`https://raw.githubusercontent.com/quoc1707/static-files/main/personal-blog/images/${author.nickname}.webp`}
+                                                    src={`/images/${author.nickname}.webp`}
                                                     alt='avatar'
                                                 />
                                                 <dl className='text-sm font-medium leading-5 whitespace-nowrap'>

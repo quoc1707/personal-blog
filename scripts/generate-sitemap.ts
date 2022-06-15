@@ -26,6 +26,7 @@ const generateSitemap = async () => {
                     .replace('/feed.xml', '')
                     .replace(/.(js|tsx|mdx)/gi, '')
                 const route = path === '/index' ? '' : path
+
                 return `
                 <url>
                     <loc>${baseURL}${route}</loc>

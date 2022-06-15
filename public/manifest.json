@@ -3,12 +3,12 @@
     "short_name": "Quoc's Blog",
     "icons": [
         {
-            "src": "https://raw.githubusercontent.com/quoc1707/static-files/main/personal-blog/icons/android-chrome-192x192.png",
+            "src": "/icons/android-chrome-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "https://raw.githubusercontent.com/quoc1707/static-files/main/personal-blog/icons/android-chrome-512x512.png",
+            "src": "/icons/android-chrome-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
         }

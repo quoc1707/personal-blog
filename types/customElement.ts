@@ -1,6 +1,6 @@
 import { MouseEventHandler } from 'react'
 
-export type ICustomLink = {
+type ICustomLink = {
     href: string | undefined
     ref?: any
     className?: string
@@ -10,16 +10,18 @@ export type ICustomLink = {
     onClick?: MouseEventHandler
 }
 
-export type Heading = {
+type Heading = {
     depth: number
     value: string
     url?: string
 }
 
-export type ITOCInline = {
+type ITOCInline = {
     toc: Heading[]
     indentDepth?: number
     fromHeading?: number
     toHeading?: number
     exclude?: string | string[]
 }
+
+export { ICustomLink, ITOCInline, Heading }

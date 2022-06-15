@@ -4,14 +4,16 @@ import type {
     IPostDetails,
 } from './detail'
 
-export type IListLayout = IPostDetails & {
+type IListLayout = IPostDetails & {
     title: string
 }
 
-export type IPostLayout = {
+type IPostLayout = {
     next: any
     prev: any
     authorDetails: IAuthorDetails[]
     children: string | JSX.Element
     frontMatter: IFrontMatterDetails
 }
+
+export { IListLayout, IPostLayout }

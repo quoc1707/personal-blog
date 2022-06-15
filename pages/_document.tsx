@@ -8,25 +8,21 @@ export default class MyDocument extends Document {
                     <link
                         rel='apple-touch-icon'
                         sizes='76x76'
-                        href='https://raw.githubusercontent.com/quoc1707/static-files/main/personal-blog/icons/apple-touch-icon.png'
+                        href='/icons/apple-touch-icon.png'
                     />
                     <link
                         rel='icon'
                         type='image/png'
                         sizes='32x32'
-                        href='https://raw.githubusercontent.com/quoc1707/static-files/main/personal-blog/icons/favicon-32x32.png'
+                        href='/icons/favicon-32x32.png'
                     />
                     <link
                         rel='icon'
                         type='image/png'
                         sizes='16x16'
-                        href='https://raw.githubusercontent.com/quoc1707/static-files/main/personal-blog/icons/favicon-16x16.png'
+                        href='/icons/favicon-16x16.png'
                     />
-                    <link
-                        rel='mask-icon'
-                        href='https://raw.githubusercontent.com/quoc1707/static-files/main/personal-blog/icons/safari-pinned-tab.svg'
-                        color='#5bbad5'
-                    />
+                    <link rel='mask-icon' href='/icons/safari-pinned-tab.svg' />
                     <link rel='manifest' href='/manifest.json' />
                 </Head>
                 <body
