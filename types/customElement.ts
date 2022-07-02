@@ -10,18 +10,18 @@ type ICustomLink = {
     onClick?: MouseEventHandler
 }
 
-type Heading = {
+type IHeading = {
     depth: number
     value: string
     url?: string
 }
 
 type ITOCInline = {
-    toc: Heading[]
+    toc: IHeading[]
     indentDepth?: number
     fromHeading?: number
     toHeading?: number
     exclude?: string | string[]
 }
 
-export { ICustomLink, ITOCInline, Heading }
+export { ICustomLink, ITOCInline, IHeading }

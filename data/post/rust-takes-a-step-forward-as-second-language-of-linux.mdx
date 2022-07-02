@@ -1,0 +1,56 @@
+---
+title: Rust takes a step forward as second language of Linux
+date: '2022-07-02'
+tags: ['random']
+description: A short description for bot crawlers.
+---
+
+<TOCInline toc={props.toc} />
+
+According to Stack Overflow Developer Survey 2022, Rust is shown to be the most loved programming language, with the percentage of dreaded responses only about 13%. 2022 marks Rust is on its seventh year as the most loved one.
+
+Although I think this result is unfair since Rust is mostly implemented in blockchain technologies, this survey partially proved Rust's attractiveness to the developer. 'Cause it's a low-level language, we all expect it to be used in systems that require high performance - such as Linux-based systems.
+
+For over three decades, Linux has been just C and assembly since the first time of public access. Indeed, Linux can be considered the most outstanding accomplishment of the C language.
+
+However, there's gathering momentum around merging Rust to the Linux kernel. At the recent Open Source Summit in Austin, Texas, Linus Torvalds stated that he could see Rust making it into the core in the next release - 5.20.
+
+## C's hidden vulnerabilities
+
+Why are the grey beards of kernel development even entertaining the idea of adding Rust? To clarify, it's just because C was designed in 1971, whose initial goal was to run on the minicomputers at Bell Labs.
+
+Being a low-level language, C is known for its performance. Access memory directly? Yep. Mix with assembly? Sure. Runs on the metal, with no garbage collection or virtual machines in the way? Absolutely. Sound great, right? Nope. C gets hoisted by its own petard. Those mentioned advantages are C's drawbacks, which make your code more vulnerable to security attacks.
+
+In other words, if you want to shoot yourself in the foot, C will hand you the fully loaded firearm.
+
+## Why is Rust a perfect alternative?
+
+Here we come up with a question: why makes Rust so interesting? In my opinion, there are three critical reasons.
+
+First, it's a high-level language with a strongly memory-safety guarantee. Rust allows us to allocate memory manually, and the compiler will automatically free it for you when a smart pointer goes out of scope. This takes advantage of C when you could reduce complex memory management. About two-thirds of all security vulnerabilities are caused by memory problems.
+
+One more thing bonus, Rust is shipped along with features that most of us appreciate in modern languages and handy functions for commonly used procedures.
+
+The final answer is that Rust is a perfect fit with kernel programming in general and C in particular. What you write is what your computer runs - it gives a fuck about interpreter and garbage collection. While Rust isn't a completely OOP, it can mesh nicely with C structs well. Have a look at Rust's stack model and compare it with another but written in C.
+
+However, 'cause Rust's memory management is safe - it seems not fitting to write a kernel. A kernel, in fact, is memory-unsafe. It must be set up in order to allocate memory, do weird pointer mathematics calculations, as well as many other bizarre kinds of stuff to make our computers work. Those tasks all work casually with a language that is always tryna keep memory manipulations safe. Don't worry. Rust had added support for the `unsafe` keyword, allowing us to perform techniques that go against Rust's memory safety guarantees, such as direct access to memory. Keep the potential problems together, and it makes auditing easier.
+
+## What's the plan for the migration?
+
+So are we about to see the kernel completely rewritten in Rust? Not likely. The kernel development process is painstakingly conservative, so the initial introduction of Rust is going to be done in the least obtrusive way possible - driver code. As kernel second-in-command put it, "drivers are probably the first place for an attempt like this as they are the 'end leafs' of the tree of dependencies in the kernel source. They depend on core kernel functionality, but nothing depends on them."
+
+In practice, this would mean that tooling, documentation, and example code would be merged into the kernel right away. At some point in the future, one of the interested parties, like Google, would start writing new drivers in Rust. Google seems to be very interested in converting parts of Android to Rust, likely in an attempt to thwart the continued pwnage of their OS from the likes of the NSO group. There's a useful example driver in Rust on the Google Security Blog. Another interesting connection is that Miguel Ojeda, lead developer of the Rust for Linux effort, is now employed full-time by Prossimo for that purpose. Prossimo is an arm of the Internet Security Research Group which is also famous for leading Let's Encrypt. Funding for Ojeda's work was provided by Google.
+
+Version 6 of the Rust patches was just sent to the kernel mailing list. This request has been calling for being pulled into the 5.19 version once its merged window opens. Each Linux kernel is released approximately every 3 weeks, so we can experience Rust in Linux in early August.
+
+If 5.19 sees support for Rust, a driver written in Rust is more likely to appear in 5.20. As hinted, Google is an active player in the Rust for Linux effort, and in the future, we can expect to see Android code partially ported to this language.
+
+## Could anything go wrong?
+
+The Rust infrastructure migration into Linux's kernel is likely to happen soon, but does anyone guarantee it to be a good thing?
+
+First off, the interface between C and Rust can facilitate unanticipated bugs to crop up. Some new code is generated automatically, and who the heck knows what actually happens underneath?
+
+What may be more of an issue is the added complexity of debugging problems when there is another language to consider. The kernel has been all in C for its entire lifetime, meaning all developers working on it are familiar with this language. After the Rust infrastructure, we'll expect to see C, Rust developers, and people who're proficient in both. There is yet another compiler that could conceivably introduce errors and another toolchain to manage.
+
+After all, do you feel those issues can be deal-breakers? I think it's not. The migration of Rust code will have an inconvenient impact on how kernel programming develops when maintainers have to brush up their knowledge about this language. Dismiss this irritation, potential benefits, of course, outweighs the downsides.
