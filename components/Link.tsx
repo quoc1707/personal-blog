@@ -1,7 +1,7 @@
-import type { ICustomLink } from '../types/customElement'
+import { CustomLink } from '../types/customElement'
 import NextLink from 'next/link'
 
-const Link = ({ href, ...rest }: ICustomLink) => {
+const Link = ({ href, ...rest }: CustomLink) => {
     const isInternal = href && href.startsWith('/')
     const isAnchor = href && href.startsWith('#')
 

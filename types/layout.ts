@@ -1,19 +1,15 @@
-import type {
-    IAuthorDetails,
-    IFrontMatterDetails,
-    IPostDetails,
-} from './detail'
+import { AuthorDetails, FrontMatterDetails, PostDetails } from './detail'
 
-type IListLayout = IPostDetails & {
+interface ListLayout extends PostDetails {
     title: string
 }
 
-type IPostLayout = {
+interface PostLayout {
     next: any
     prev: any
-    authorDetails: IAuthorDetails[]
+    authorDetails: AuthorDetails[]
     children: string | JSX.Element
-    frontMatter: IFrontMatterDetails
+    frontMatter: FrontMatterDetails
 }
 
-export { IListLayout, IPostLayout }
+export { ListLayout, PostLayout }

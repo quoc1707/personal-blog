@@ -1,13 +1,13 @@
-import type { IPagination } from './pagination'
+import { Pagination } from './pagination'
 
-type IAuthorDetails = {
+interface AuthorDetails {
     name: string
     nickname: string
     contact: string
     occupation: string
 }
 
-type IFrontMatterDetails = {
+interface FrontMatterDetails {
     description: string
     date: string
     filename: string
@@ -18,10 +18,10 @@ type IFrontMatterDetails = {
     tags: string[]
 }
 
-type IPostDetails = {
+interface PostDetails {
     initialDisplayPosts: Object[]
-    pagination: IPagination
+    pagination: Pagination
     posts: any[]
 }
 
-export { IAuthorDetails, IFrontMatterDetails, IPostDetails }
+export { AuthorDetails, FrontMatterDetails, PostDetails }

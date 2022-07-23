@@ -1,3 +1,4 @@
+const { defaultPath } = require('../utils/variable')
 const { writeFile, readdirSync } = require('fs')
 const { join, parse } = require('path')
 const dedent = require('dedent')
@@ -5,7 +6,7 @@ const inquirer = require('inquirer')
 
 const root = process.cwd()
 
-type IAnswer = {
+interface Answer {
     title: string
     tags: string
     description: string
@@ -20,7 +21,7 @@ const getAuthors = (): string[] => {
     return authorList
 }
 
-const genFrontMatter = (answer: IAnswer): string => {
+const genFrontMatter = (answer: Answer): string => {
     let d = new Date()
     const date = [
         d.getFullYear(),
@@ -75,10 +76,12 @@ inquirer
             choices: getAuthors,
         },
     ])
-    .then((answer: IAnswer) => {
+    .then((answer: Answer) => {
         const fileName = answer.title.toLowerCase().replace(/\s/g, '_')
         const frontMatter = genFrontMatter(answer)
-        const filePath = `data/post/${fileName ? fileName : 'untitled'}.mdx`
+        const filePath = `${defaultPath}/${
+            fileName ? fileName : 'untitled'
+        }.mdx`
 
         writeFile(filePath, frontMatter, (error: Error) => {
             error

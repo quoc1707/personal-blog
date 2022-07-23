@@ -1,6 +1,6 @@
 import { MutableRefObject } from 'react'
 
-export type IKeyboardShortcut = {
+export interface KeyboardShortcut {
     prev?: {
         slug: string
     }

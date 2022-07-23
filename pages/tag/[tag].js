@@ -1,9 +1,10 @@
 import ListLayout from '../../layouts/ListLayout'
+import { defaultPath } from '../../utils/variable'
 import { getAllFilesFrontMatter } from '../../utils/mdx'
 import getAllTags from '../../utils/tags'
 
 const getStaticPaths = async () => {
-    const tags = await getAllTags('post')
+    const tags = await getAllTags(defaultPath)
     return {
         paths: Object.keys(tags).map((tag) => ({
             params: {
@@ -15,7 +16,7 @@ const getStaticPaths = async () => {
 }
 
 const getStaticProps = async ({ params }) => {
-    const allPosts = await getAllFilesFrontMatter('post')
+    const allPosts = await getAllFilesFrontMatter(defaultPath)
     const filteredPosts = allPosts.filter((post) =>
         post.tags.includes(params.tag)
     )

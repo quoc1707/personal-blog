@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import type { IPagination } from '../types/pagination'
+import { Pagination } from '../types/pagination'
 import KeyboardShortcut from './KeyboardShortcut'
 import Link from './Link'
 
-const Pagination = ({ title, currentPage, totalPages }: IPagination) => {
+const Pagination = ({ title, currentPage, totalPages }: Pagination) => {
     const prevPage = currentPage - 1 > 0
     const nextPage = currentPage + 1 <= totalPages
 

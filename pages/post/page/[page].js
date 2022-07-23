@@ -1,10 +1,11 @@
 import ListLayout from '../../../layouts/ListLayout'
+import { defaultPath } from '../../../utils/variable'
 import { getAllFilesFrontMatter } from '../../../utils/mdx'
 
 const POSTS_PER_PAGE = 5
 
 const getStaticPaths = async () => {
-    const totalPosts = await getAllFilesFrontMatter('post')
+    const totalPosts = await getAllFilesFrontMatter(defaultPath)
     const totalPages = Math.ceil(totalPosts.length / POSTS_PER_PAGE)
     const paths = Array.from({ length: totalPages }, (_, i) => ({
         params: { page: (i + 1).toString() },
@@ -20,7 +21,7 @@ const getStaticProps = async (context) => {
     const {
         params: { page },
     } = context
-    const posts = await getAllFilesFrontMatter('post')
+    const posts = await getAllFilesFrontMatter(defaultPath)
     const pageNumber = parseInt(page)
     const initialDisplayPosts = posts.slice(
         POSTS_PER_PAGE * (pageNumber - 1),

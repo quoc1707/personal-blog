@@ -1,7 +1,7 @@
-import type { IKeyboardShortcut } from '../types/handler'
-import { useEffect } from 'react'
-import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+import { KeyboardShortcut } from '../types/handler'
 
 const KeyboardShortcut = ({
     prev,
@@ -11,7 +11,7 @@ const KeyboardShortcut = ({
     currentPage,
     elementToFocus,
     action,
-}: IKeyboardShortcut): any => {
+}: KeyboardShortcut): any => {
     const router = useRouter()
     const { theme, setTheme } = useTheme()
 
@@ -25,15 +25,15 @@ const KeyboardShortcut = ({
         if (action === 'navigateBetweenSearch') {
             if (event.key === 'ArrowLeft' && prevPage)
                 router.push(
-                    currentPage - 1 === 1
+                    currentPage! - 1 === 1
                         ? `/post`
-                        : `/post/page/${currentPage - 1}`
+                        : `/post/page/${currentPage! - 1}`
                 )
             if (event.key === 'ArrowRight' && nextPage)
-                router.push(`/post/page/${currentPage + 1}`)
+                router.push(`/post/page/${currentPage! + 1}`)
         }
         if (action === 'focusElement') {
-            if (event.ctrlKey && event.key === 'k' && elementToFocus.current) {
+            if (event.ctrlKey && event.key === 'k' && elementToFocus?.current) {
                 event.preventDefault()
                 elementToFocus.current.focus()
             }

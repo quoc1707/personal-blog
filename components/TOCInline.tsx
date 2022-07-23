@@ -1,4 +1,4 @@
-import type { ITOCInline } from '../types/customElement'
+import { TOCInline } from '../types/customElement'
 
 const TOCInline = ({
     toc,
@@ -6,7 +6,7 @@ const TOCInline = ({
     fromHeading = 1,
     toHeading = 3,
     exclude = '',
-}: ITOCInline) => {
+}: TOCInline) => {
     const re = Array.isArray(exclude)
         ? new RegExp('^(' + exclude.join('|') + ')$', 'i')
         : new RegExp('^(' + exclude + ')$', 'i')

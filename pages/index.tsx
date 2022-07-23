@@ -1,13 +1,14 @@
 import Head from 'next/head'
 import Link from '../components/Link'
 import Tag from '../components/Tag'
+import { defaultPath } from '../utils/variable'
 import formatTime from '../utils/time'
 import { getAllFilesFrontMatter } from '../utils/mdx'
 
 const MAX_DISPLAY = 5
 
 export const getStaticProps = async () => {
-    const posts = await getAllFilesFrontMatter('post')
+    const posts = await getAllFilesFrontMatter(defaultPath)
     return { props: { posts } }
 }
 

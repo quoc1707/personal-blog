@@ -16,7 +16,7 @@ import remarkMath from 'remark-math'
 const root = process.cwd()
 
 const getFiles = (type) => {
-    const prefixPaths = join(root, 'data', type)
+    const prefixPaths = join(root, type)
     const files = getAllFilesRecursively(prefixPaths)
 
     return files.map((file) =>
@@ -35,8 +35,8 @@ const dateSortDesc = (a, b) => {
 }
 
 const getFileBySlug = async (type, slug) => {
-    const mdxPath = join(root, 'data', type, `${slug}.mdx`)
-    const mdPath = join(root, 'data', type, `${slug}.md`)
+    const mdxPath = join(root, type, `${slug}.mdx`)
+    const mdPath = join(root, type, `${slug}.md`)
     const source = existsSync(mdxPath)
         ? readFileSync(mdxPath, 'utf8')
         : readFileSync(mdPath, 'utf8')
@@ -103,7 +103,7 @@ const getFileBySlug = async (type, slug) => {
 }
 
 const getAllFilesFrontMatter = async (folder) => {
-    const prefixPaths = join(root, 'data', folder)
+    const prefixPaths = join(root, folder)
     const files = getAllFilesRecursively(prefixPaths)
     const allFrontMatter = []
 

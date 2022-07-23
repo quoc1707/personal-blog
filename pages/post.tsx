@@ -1,12 +1,13 @@
 import Head from 'next/head'
-import type { IPostDetails } from '../types/detail'
 import ListLayout from '../layouts/ListLayout'
+import { PostDetails } from '../types/detail'
+import { defaultPath } from '../utils/variable'
 import { getAllFilesFrontMatter } from '../utils/mdx'
 
 const POSTS_PER_PAGE = 5
 
 export const getStaticProps = async () => {
-    const posts = await getAllFilesFrontMatter('post')
+    const posts = await getAllFilesFrontMatter(defaultPath)
     const initialDisplayPosts = posts.slice(0, POSTS_PER_PAGE)
     const pagination = {
         currentPage: 1,
@@ -16,7 +17,7 @@ export const getStaticProps = async () => {
     return { props: { initialDisplayPosts, pagination, posts } }
 }
 
-const Posts = ({ initialDisplayPosts, pagination, posts }: IPostDetails) => {
+const Posts = ({ initialDisplayPosts, pagination, posts }: PostDetails) => {
     return (
         <>
             <Head>

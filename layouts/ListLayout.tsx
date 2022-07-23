@@ -1,12 +1,12 @@
 import { useRef, useState } from 'react'
 
 import Head from 'next/head'
-import type { IFrontMatterDetails } from '../types/detail'
-import type { IListLayout } from '../types/layout'
 import KeyboardShortcut from '../components/KeyboardShortcut'
 import Link from '../components/Link'
 import Pagination from '../components/Pagination'
 import Tag from '../components/Tag'
+import { FrontMatterDetails } from '../types/detail'
+import { ListLayout } from '../types/layout'
 import formatTime from '../utils/time'
 
 const ListLayout = ({
@@ -14,12 +14,12 @@ const ListLayout = ({
     pagination,
     posts,
     title,
-}: IListLayout) => {
+}: ListLayout) => {
     const searchInput = useRef(null)
     const [searchValue, setSearchValue] = useState('')
 
     const filteredBlogPosts = posts.filter(
-        (frontMatter: IFrontMatterDetails) => {
+        (frontMatter: FrontMatterDetails) => {
             let searchPrefix = searchValue[0]
             let searchContent
             switch (searchPrefix) {
@@ -93,63 +93,55 @@ const ListLayout = ({
                         {!filteredBlogPosts.length && (
                             <div className='py-4'>No posts found.</div>
                         )}
-                        {displayPosts.map(
-                            (frontMatter: IFrontMatterDetails) => {
-                                return (
-                                    <li key={frontMatter.slug} className='py-4'>
-                                        <article className='space-y-2 md:grid md:grid-cols-4 md:space-y-0 md:items-baseline'>
-                                            <dl>
-                                                <dt className='sr-only'>
-                                                    Published on
-                                                </dt>
-                                                <dd className='text-base font-medium leading-6 text-gray-500 dark:text-gray-400'>
-                                                    <time
-                                                        dateTime={
-                                                            frontMatter.date
-                                                        }
+                        {displayPosts.map((frontMatter: FrontMatterDetails) => {
+                            return (
+                                <li key={frontMatter.slug} className='py-4'>
+                                    <article className='space-y-2 md:grid md:grid-cols-4 md:space-y-0 md:items-baseline'>
+                                        <dl>
+                                            <dt className='sr-only'>
+                                                Published on
+                                            </dt>
+                                            <dd className='text-base font-medium leading-6 text-gray-500 dark:text-gray-400'>
+                                                <time
+                                                    dateTime={frontMatter.date}
+                                                >
+                                                    {formatTime(
+                                                        frontMatter.date
+                                                    )}
+                                                </time>
+                                            </dd>
+                                        </dl>
+                                        <div className='space-y-3 md:col-span-3'>
+                                            <div>
+                                                <h3 className='text-2xl font-bold leading-8 tracking-tight'>
+                                                    <Link
+                                                        className='text-gray-900 dark:text-gray-100'
+                                                        href={`/post/${frontMatter.slug}`}
                                                     >
-                                                        {formatTime(
-                                                            frontMatter.date
-                                                        )}
-                                                    </time>
-                                                </dd>
-                                            </dl>
-                                            <div className='space-y-3 md:col-span-3'>
-                                                <div>
-                                                    <h3 className='text-2xl font-bold leading-8 tracking-tight'>
-                                                        <Link
-                                                            className='text-gray-900 dark:text-gray-100'
-                                                            href={`/post/${frontMatter.slug}`}
-                                                        >
-                                                            {frontMatter.title}
-                                                        </Link>
-                                                    </h3>
-                                                    <div className='flex flex-wrap'>
-                                                        {frontMatter.tags.map(
-                                                            (tag) => {
-                                                                return (
-                                                                    <Tag
-                                                                        text={
-                                                                            tag
-                                                                        }
-                                                                        key={
-                                                                            tag
-                                                                        }
-                                                                    />
-                                                                )
-                                                            }
-                                                        )}
-                                                    </div>
-                                                </div>
-                                                <div className='prose text-gray-500 max-w-none dark:text-gray-400'>
-                                                    {frontMatter.description}
+                                                        {frontMatter.title}
+                                                    </Link>
+                                                </h3>
+                                                <div className='flex flex-wrap'>
+                                                    {frontMatter.tags.map(
+                                                        (tag) => {
+                                                            return (
+                                                                <Tag
+                                                                    text={tag}
+                                                                    key={tag}
+                                                                />
+                                                            )
+                                                        }
+                                                    )}
                                                 </div>
                                             </div>
-                                        </article>
-                                    </li>
-                                )
-                            }
-                        )}
+                                            <div className='prose text-gray-500 max-w-none dark:text-gray-400'>
+                                                {frontMatter.description}
+                                            </div>
+                                        </div>
+                                    </article>
+                                </li>
+                            )
+                        })}
                     </ul>
                 </div>
                 {pagination && pagination.totalPages > 1 && !searchValue && (

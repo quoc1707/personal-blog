@@ -1,13 +1,13 @@
 import Head from 'next/head'
-import type { IPostLayout } from '../types/layout'
 import Image from 'next/image'
 import KeyboardShortcut from '../components/KeyboardShortcut'
 import Link from '../components/Link'
 import PageTitle from '../components/PageTitle'
 import Scroller from '../components/Scroller'
 import Tag from '../components/Tag'
-import formatTime from '../utils/time'
+import { PostLayout } from '../types/layout'
 import generatePath from '../utils/path'
+import formatTime from '../utils/time'
 
 const PostLayout = ({
     authorDetails,
@@ -15,7 +15,7 @@ const PostLayout = ({
     frontMatter,
     next,
     prev,
-}: IPostLayout) => {
+}: PostLayout) => {
     const { date, description, title, tags } = frontMatter
     return (
         <>

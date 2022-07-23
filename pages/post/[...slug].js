@@ -6,9 +6,10 @@ import {
 } from '../../utils/mdx'
 
 import MDXLayoutRenderer from '../../components/MDXLayoutRenderer'
+import { defaultPath } from '../../utils/variable'
 
 const getStaticPaths = async () => {
-    const posts = getFiles('post')
+    const posts = getFiles(defaultPath)
     return {
         paths: posts.map((p) => ({
             params: {
@@ -20,16 +21,16 @@ const getStaticPaths = async () => {
 }
 
 const getStaticProps = async ({ params }) => {
-    const allPosts = await getAllFilesFrontMatter('post')
+    const allPosts = await getAllFilesFrontMatter(defaultPath)
     const postIndex = allPosts.findIndex(
         (post) => formatSlug(post.slug) === params.slug.join('/')
     )
     const prev = allPosts[postIndex + 1] || null
     const next = allPosts[postIndex - 1] || null
-    const post = await getFileBySlug('post', params.slug.join('/'))
+    const post = await getFileBySlug(defaultPath, params.slug.join('/'))
     const authorList = post.frontMatter.authors || ['default']
     const authorPromise = authorList.map(async (author) => {
-        const authorResults = await getFileBySlug('author', [author])
+        const authorResults = await getFileBySlug('data/authors', [author])
         return authorResults.frontMatter
     })
     const authorDetails = await Promise.all(authorPromise)

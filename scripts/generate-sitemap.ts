@@ -1,14 +1,13 @@
 const { writeFile } = require('fs/promises')
 const globby = require('globby')
 const { resolveConfig, format } = require('prettier')
-
-const baseURL = 'https://quoc1707-blog.vercel.app'
+const { defaultPath, baseURL } = require('../utils/variable')
 
 const generateSitemap = async () => {
     const prettierConfig = await resolveConfig('./.prettierrc')
     const pages = await globby([
         'pages/*.tsx',
-        'data/post/**/*.mdx',
+        `${defaultPath}/**/*.mdx`,
         '!pages/_*.tsx',
     ])
     const sitemap = `

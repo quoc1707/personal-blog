@@ -1,10 +1,11 @@
 import Head from 'next/head'
 import Link from '../components/Link'
 import Tag from '../components/Tag'
+import { defaultPath } from '../utils/variable'
 import getAllTags from '../utils/tags'
 
 export const getStaticProps = async () => {
-    const tags = await getAllTags('post')
+    const tags = await getAllTags(defaultPath)
     return { props: { tags } }
 }
 
